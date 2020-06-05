@@ -18,28 +18,37 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import java.io.PrintStream;
 
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.spy;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyZeroInteractions;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class RepositoryTest {
 
-    @Spy
-    Repository repository;
+    public static final int TEST_NUMBER_OF_LEAFS = 5;
 
-    @Rule
-    public InstantTaskExecutorRule instantTaskExecutorRule =
-            new InstantTaskExecutorRule();
-
-    @Before
-    public void setUp() throws Exception {
-    }
+    Repository r = mock(Repository.class);
 
     @Test
-    public void getData() {
-        when(repository.getMutableLiveData("cho", "cho")).thenReturn(repository.mutableLiveData);
-        Log.d("Mockito",""+ repository.mutableLiveData.getValue());
+    public void shouldReturnGivenValue() {
+
+        when(r.getNumberOfLeafs()).thenReturn(8);
+
+        //when(repository.r()).thenReturn(8);
+        int one = r.getNumberOfLeafs();
+        int two = r.getNumberOfLeafs();
+        //int getString = r.getNumberOfLeafs();
+        //assertEquals(r, 8);
+
+        verify(r, times(2)).getNumberOfLeafs();
+        //verify that other mocks were not interacted
+        //verifyZeroInteractions(r.getString());
+
     }
 }

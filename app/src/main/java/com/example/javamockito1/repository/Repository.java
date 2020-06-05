@@ -8,8 +8,12 @@ public class Repository {
 
     public MutableLiveData<String> mutableLiveData = new MutableLiveData<>();
 
-    public MutableLiveData<String> getMutableLiveData(String name, String pass) {
-        mutableLiveData.setValue("name is "+name+" pass is "+pass);
-        return mutableLiveData;
+    public Integer getNumberOfLeafs() {
+        return 5;
+    }
+
+
+    public String getString() {
+        return "Not called";
     }
 }
